@@ -14,10 +14,10 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '10.0'
   # s.osx.deployment_target = '10.12'
 
-  s.source_files = 'BigDiffer/Classes/**/*'
   s.swift_version = '4.1'
 
   s.subspec 'Differ' do |ss|
+    ss.source_files = 'BigDiffer/Classes/Differ/**/*'
     ss.dependency 'Differ'
  end
 end

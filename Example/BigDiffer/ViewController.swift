@@ -1,5 +1,6 @@
 import UIKit
 import Differ
+import BigDiffer
 
 final class ViewController: UITableViewController {
     private var datasource: [String] = [] {
@@ -16,6 +17,8 @@ final class ViewController: UITableViewController {
         toolbarItems = [
             UIBarButtonItem(title: "1 Row", style: .plain, target: self, action: #selector(updateTo1Row)),
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "5 Rows", style: .plain, target: self, action: #selector(updateTo5Row)),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
             UIBarButtonItem(title: "5000 Rows", style: .plain, target: self, action: #selector(updateTo5000Row))]
     }
 
@@ -31,7 +34,7 @@ final class ViewController: UITableViewController {
         let diff = old.extendedDiff(new)
         let diffed = Date()
 
-        tableView.apply(diff)
+        tableView.applyWithOptimizations(diff, numberOfRows: new.count)
         let applied = Date()
 
         let measures = String(format: "diff: %.1fs, apply: %.1fs, total: %.1fs",
@@ -43,6 +46,10 @@ final class ViewController: UITableViewController {
 
     @objc private func updateTo1Row() {
         datasource = Array(Data.gemojiFoodsByPeople.prefix(1))
+    }
+
+    @objc private func updateTo5Row() {
+        datasource = Array(Data.gemojiFoodsByPeople.dropFirst(5).prefix(5))
     }
 
     @objc private func updateTo5000Row() {

@@ -23,7 +23,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BigDiffer: a355d61ad834898bd84cfef9d665ffaf9509bde7
+  BigDiffer: 5ba905a001a706598f5a744f20990646071ddff7
   Differ: 5ac7b6d0d3a60274b52a0ef087ec0e411b57db2c
   Nimble: 391f07782af4b37914f9bd7b2ffbb952731b8202
   Quick: 03278013f71aa05fe9ecabc94fbcc6835f1ee76f
