@@ -1,0 +1,33 @@
+PODS:
+  - BigDiffer (0.1.0):
+    - BigDiffer/Differ (= 0.1.0)
+  - BigDiffer/Differ (0.1.0):
+    - Differ
+  - Differ (1.2.2)
+  - Nimble (7.1.1)
+  - Quick (1.3.0)
+
+DEPENDENCIES:
+  - BigDiffer (from `../`)
+  - Nimble
+  - Quick
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Differ
+    - Nimble
+    - Quick
+
+EXTERNAL SOURCES:
+  BigDiffer:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  BigDiffer: a355d61ad834898bd84cfef9d665ffaf9509bde7
+  Differ: 5ac7b6d0d3a60274b52a0ef087ec0e411b57db2c
+  Nimble: 391f07782af4b37914f9bd7b2ffbb952731b8202
+  Quick: 03278013f71aa05fe9ecabc94fbcc6835f1ee76f
+
+PODFILE CHECKSUM: 91d832d279fd42ac9f6c4d08a763a35824b489b3
+
+COCOAPODS: 1.5.0

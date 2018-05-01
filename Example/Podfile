@@ -1,0 +1,13 @@
+platform :ios, '10.0'
+use_frameworks!
+
+target 'BigDiffer_Example' do
+  pod 'BigDiffer', :path => '../'
+
+  target 'BigDiffer_Tests' do
+    inherit! :search_paths
+
+    pod 'Quick'
+    pod 'Nimble'
+  end
+end
