@@ -4,17 +4,20 @@ PODS:
   - BigDiffer/Differ (0.1.0):
     - Differ
   - Differ (1.2.2)
+  - Eureka (4.1.1)
   - Nimble (7.1.1)
   - Quick (1.3.0)
 
 DEPENDENCIES:
   - BigDiffer (from `../`)
+  - Eureka
   - Nimble
   - Quick
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Differ
+    - Eureka
     - Nimble
     - Quick
 
@@ -25,9 +28,10 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   BigDiffer: 5ba905a001a706598f5a744f20990646071ddff7
   Differ: 5ac7b6d0d3a60274b52a0ef087ec0e411b57db2c
+  Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
   Nimble: 391f07782af4b37914f9bd7b2ffbb952731b8202
   Quick: 03278013f71aa05fe9ecabc94fbcc6835f1ee76f
 
-PODFILE CHECKSUM: 91d832d279fd42ac9f6c4d08a763a35824b489b3
+PODFILE CHECKSUM: 07dd580205ee5a29364ac4f7f4b694162c8772cf
 
 COCOAPODS: 1.5.0

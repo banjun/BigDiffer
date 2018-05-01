@@ -3,6 +3,7 @@ use_frameworks!
 
 target 'BigDiffer_Example' do
   pod 'BigDiffer', :path => '../'
+  pod 'Eureka'
 
   target 'BigDiffer_Tests' do
     inherit! :search_paths

@@ -2,7 +2,7 @@ import UIKit
 import Differ
 import BigDiffer
 
-final class ViewController: UITableViewController, UISearchResultsUpdating {
+final class SingleSectionTableViewController: UITableViewController, UISearchResultsUpdating {
     private var datasource: [String] = [] {
         didSet {filteredDatasource = searchText.isEmpty ? datasource : datasource.filter {$0.contains(searchText)}}
     }
@@ -17,8 +17,6 @@ final class ViewController: UITableViewController, UISearchResultsUpdating {
         super.viewDidLoad()
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
-
-        navigationController?.navigationBar.titleTextAttributes = [.font: UIFont.systemFont(ofSize: 12)]
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(sortRows))
 
@@ -40,6 +38,7 @@ final class ViewController: UITableViewController, UISearchResultsUpdating {
         super.viewWillAppear(animated)
 
         navigationController?.setToolbarHidden(false, animated: animated)
+        navigationController?.navigationBar.titleTextAttributes = [.font: UIFont.systemFont(ofSize: 12)]
     }
 
     func diffAndPatch(old: [String], new: [String]) {
