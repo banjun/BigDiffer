@@ -32,6 +32,9 @@ final class MultiSectionTableViewController: UITableViewController {
             UIBarButtonItem(title: "5,5 Rows", style: .plain, target: self, action: #selector(makeRow5Row5)),
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
             UIBarButtonItem(title: "More Rows", style: .plain, target: self, action: #selector(populateRows))]
+        // TODO: more actions
+        // - insert,delete,moveSection
+        // - move items between sections
 
         populateRows()
     }
@@ -49,8 +52,8 @@ final class MultiSectionTableViewController: UITableViewController {
         let diff = old.nestedExtendedDiff(to: new)
         let diffed = Date()
 
-        tableView.apply(diff, indexPathTransform: {$0}, sectionTransform: {$0})
-        // tableView.applyWithOptimizations(diff)
+        // tableView.apply(diff, indexPathTransform: {$0}, sectionTransform: {$0})
+        tableView.applyWithOptimizations(diff, indexPathTransform: {$0}, sectionTransform: {$0})
         let applied = Date()
 
         let measures = String(format: "diff: %.1fs, apply: %.1fs, total: %.1fs",
