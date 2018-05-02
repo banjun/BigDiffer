@@ -20,6 +20,12 @@ Pod::Spec.new do |s|
     ss.source_files = 'BigDiffer/Classes/Core/**/*.swift'
   end
 
+  s.subspec 'BigDiffer' do |ss|
+    ss.source_files = 'BigDiffer/Classes/BigDiffer/**/*.swift'
+    ss.dependency 'BigDiffer/Core'
+    ss.dependency 'ListDiff'
+  end
+
   s.subspec 'Differ' do |ss|
     ss.source_files = 'BigDiffer/Classes/Differ/**/*.swift'
     ss.dependency 'BigDiffer/Core'

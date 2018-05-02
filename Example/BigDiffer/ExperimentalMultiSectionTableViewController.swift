@@ -1,6 +1,8 @@
 import UIKit
+import BigDiffer
+import ListDiff
 
-private struct SectionedValue: Equatable, RandomAccessCollection {
+private struct SectionedValue: RandomAccessCollection, BigDiffableSection {
     // NOTE: best practice: using Generics makes slower unless specialized
     var section: String
     var values: [String]
@@ -16,7 +18,11 @@ private struct SectionedValue: Equatable, RandomAccessCollection {
     }
 }
 
-final class DifferMultiSectionTableViewController: UITableViewController {
+extension String: Diffable {
+    public var diffIdentifier: AnyHashable {return hashValue}
+}
+
+final class ExperimentalMultiSectionTableViewController: UITableViewController {
     private var datasource: [SectionedValue] = [] {
         didSet {diffAndPatch(old: oldValue, new: datasource)}
     }
@@ -48,12 +54,10 @@ final class DifferMultiSectionTableViewController: UITableViewController {
 
     private func diffAndPatch(old: [SectionedValue], new: [SectionedValue]) {
         let started = Date()
-
-        let diff = old.nestedExtendedDiff(to: new)
         let diffed = Date()
 
-        // tableView.apply(diff, indexPathTransform: {$0}, sectionTransform: {$0})
-        tableView.applyWithOptimizations(diff, indexPathTransform: {$0}, sectionTransform: {$0})
+        tableView.reloadUsingBigDiff(old: old, new: new)
+
         let applied = Date()
 
         let measures = String(format: "diff: %.1fs, apply: %.1fs, total: %.1fs",
@@ -71,8 +75,9 @@ final class DifferMultiSectionTableViewController: UITableViewController {
 
     @objc private func makeRow5Row5() {
         datasource = [
-            SectionedValue(section: "People", values: Array(Data.gemojiPeople.prefix(5))),
-            SectionedValue(section: "FoodsByPeople", values: Array(Data.gemojiFoodsByPeople.prefix(5)))]
+            SectionedValue(section: "FoodsByPeople", values: Array(Data.gemojiFoodsByPeople.prefix(5))),
+            SectionedValue(section: "Foods", values: Array(Data.gemojiFoods.prefix(5))),
+            SectionedValue(section: "People", values: Array(Data.gemojiPeople.prefix(5)))]
     }
 
     @objc private func populateRows() {

@@ -37,6 +37,14 @@ final class MenuViewController: FormViewController {
                 }
                 $0.cell.accessoryType = .disclosureIndicator
         }
+            +++ Section("experimental")
+            <<< LabelRow {
+                $0.title = "Muti-Section TableView"
+                $0.onCellSelection { [unowned self] _, _ in
+                    self.show(ExperimentalMultiSectionTableViewController(style: .plain), sender: nil)
+                }
+                $0.cell.accessoryType = .disclosureIndicator
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {fatalError()}

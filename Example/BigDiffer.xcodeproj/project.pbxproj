@@ -16,6 +16,7 @@
 		A1AEF63F8E6DE4BC200764CC /* Pods_BigDiffer_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25ADB460A1737D876ADE02AF /* Pods_BigDiffer_Example.framework */; };
 		EA4318192099441A009BB737 /* HeckelDiffSingleSectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4318182099441A009BB737 /* HeckelDiffSingleSectionTableViewController.swift */; };
 		EA43181D20996726009BB737 /* DeepDiffSingleSectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA43181C20996726009BB737 /* DeepDiffSingleSectionTableViewController.swift */; };
+		EA43182020998171009BB737 /* ExperimentalMultiSectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA43181F20998171009BB737 /* ExperimentalMultiSectionTableViewController.swift */; };
 		EA732D4B20980CB900790B9B /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA732D4A20980CB900790B9B /* Data.swift */; };
 		EA732D4D2098583300790B9B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA732D4C2098583300790B9B /* MenuViewController.swift */; };
 		EA732D4F2098591900790B9B /* DifferMultiSectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA732D4E2098591800790B9B /* DifferMultiSectionTableViewController.swift */; };
@@ -52,6 +53,7 @@
 		E41189EA0EEF01063D7EA02A /* Pods-BigDiffer_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigDiffer_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BigDiffer_Tests/Pods-BigDiffer_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		EA4318182099441A009BB737 /* HeckelDiffSingleSectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeckelDiffSingleSectionTableViewController.swift; sourceTree = "<group>"; };
 		EA43181C20996726009BB737 /* DeepDiffSingleSectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepDiffSingleSectionTableViewController.swift; sourceTree = "<group>"; };
+		EA43181F20998171009BB737 /* ExperimentalMultiSectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentalMultiSectionTableViewController.swift; sourceTree = "<group>"; };
 		EA732D4A20980CB900790B9B /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		EA732D4C2098583300790B9B /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		EA732D4E2098591800790B9B /* DifferMultiSectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifferMultiSectionTableViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				EA732D4E2098591800790B9B /* DifferMultiSectionTableViewController.swift */,
 				EA4318182099441A009BB737 /* HeckelDiffSingleSectionTableViewController.swift */,
 				EA43181C20996726009BB737 /* DeepDiffSingleSectionTableViewController.swift */,
+				EA43181F20998171009BB737 /* ExperimentalMultiSectionTableViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -324,6 +327,7 @@
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/HeckelDiff/HeckelDiff.framework",
+				"${BUILT_PRODUCTS_DIR}/ListDiff/ListDiff.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -332,6 +336,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HeckelDiff.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ListDiff.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -364,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA732D4F2098591900790B9B /* DifferMultiSectionTableViewController.swift in Sources */,
+				EA43182020998171009BB737 /* ExperimentalMultiSectionTableViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* DifferSingleSectionTableViewController.swift in Sources */,
 				EA43181D20996726009BB737 /* DeepDiffSingleSectionTableViewController.swift in Sources */,
 				EA4318192099441A009BB737 /* HeckelDiffSingleSectionTableViewController.swift in Sources */,
