@@ -28,6 +28,14 @@ final class MenuViewController: FormViewController {
                     self.show(HeckelDiffSingleSectionTableViewController(style: .plain), sender: nil)
                 }
                 $0.cell.accessoryType = .disclosureIndicator
+            }
+            +++ Section("muukii/DataSources")
+            <<< LabelRow {
+                $0.title = "Single-Section TableView"
+                $0.onCellSelection { [unowned self] _, _ in
+                    self.show(DataSourcesSingleSectionTableViewController(style: .plain), sender: nil)
+                }
+                $0.cell.accessoryType = .disclosureIndicator
         }
     }
     

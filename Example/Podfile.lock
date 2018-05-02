@@ -1,15 +1,22 @@
 PODS:
   - BigDiffer (0.1.0):
     - BigDiffer/Core (= 0.1.0)
+    - BigDiffer/DataSources (= 0.1.0)
     - BigDiffer/Differ (= 0.1.0)
     - BigDiffer/HeckelDiff (= 0.1.0)
   - BigDiffer/Core (0.1.0)
+  - BigDiffer/DataSources (0.1.0):
+    - BigDiffer/Core
+    - DataSources
   - BigDiffer/Differ (0.1.0):
     - BigDiffer/Core
     - Differ
   - BigDiffer/HeckelDiff (0.1.0):
     - BigDiffer/Core
     - HeckelDiff
+  - DataSources (0.6.0):
+    - DataSources/Default (= 0.6.0)
+  - DataSources/Default (0.6.0)
   - Differ (1.2.2)
   - Eureka (4.1.1)
   - HeckelDiff (0.2.3)
@@ -24,6 +31,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - DataSources
     - Differ
     - Eureka
     - HeckelDiff
@@ -35,7 +43,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BigDiffer: 87c40ccd0e38c1ef5364609acbf418d860b2b989
+  BigDiffer: 8ce1ff2b50c14531a65f5a9dc2840ac14e351d9d
+  DataSources: 96cf2d97a85072664e991d725beee56d25e9d69d
   Differ: 5ac7b6d0d3a60274b52a0ef087ec0e411b57db2c
   Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
   HeckelDiff: 1170b3c499825d7c7d0478fd7ad779b07d0ad915

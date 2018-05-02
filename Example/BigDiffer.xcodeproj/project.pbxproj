@@ -15,6 +15,7 @@
 		67B7CF5203BBDF45BC61AD16 /* Pods_BigDiffer_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D3B20FA781032BA1A5ED58 /* Pods_BigDiffer_Tests.framework */; };
 		A1AEF63F8E6DE4BC200764CC /* Pods_BigDiffer_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25ADB460A1737D876ADE02AF /* Pods_BigDiffer_Example.framework */; };
 		EA4318192099441A009BB737 /* HeckelDiffSingleSectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4318182099441A009BB737 /* HeckelDiffSingleSectionTableViewController.swift */; };
+		EA43181B20995B12009BB737 /* DataSourcesSingleSectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA43181A20995B12009BB737 /* DataSourcesSingleSectionTableViewController.swift */; };
 		EA732D4B20980CB900790B9B /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA732D4A20980CB900790B9B /* Data.swift */; };
 		EA732D4D2098583300790B9B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA732D4C2098583300790B9B /* MenuViewController.swift */; };
 		EA732D4F2098591900790B9B /* DifferMultiSectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA732D4E2098591800790B9B /* DifferMultiSectionTableViewController.swift */; };
@@ -50,6 +51,7 @@
 		D301249CE66A7B9BF6945455 /* Pods-BigDiffer_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigDiffer_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-BigDiffer_Example/Pods-BigDiffer_Example.release.xcconfig"; sourceTree = "<group>"; };
 		E41189EA0EEF01063D7EA02A /* Pods-BigDiffer_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigDiffer_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BigDiffer_Tests/Pods-BigDiffer_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		EA4318182099441A009BB737 /* HeckelDiffSingleSectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeckelDiffSingleSectionTableViewController.swift; sourceTree = "<group>"; };
+		EA43181A20995B12009BB737 /* DataSourcesSingleSectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourcesSingleSectionTableViewController.swift; sourceTree = "<group>"; };
 		EA732D4A20980CB900790B9B /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		EA732D4C2098583300790B9B /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		EA732D4E2098591800790B9B /* DifferMultiSectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifferMultiSectionTableViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				607FACD71AFB9204008FA782 /* DifferSingleSectionTableViewController.swift */,
 				EA732D4E2098591800790B9B /* DifferMultiSectionTableViewController.swift */,
 				EA4318182099441A009BB737 /* HeckelDiffSingleSectionTableViewController.swift */,
+				EA43181A20995B12009BB737 /* DataSourcesSingleSectionTableViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -317,6 +320,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BigDiffer_Example/Pods-BigDiffer_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BigDiffer/BigDiffer.framework",
+				"${BUILT_PRODUCTS_DIR}/DataSources/DataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/HeckelDiff/HeckelDiff.framework",
@@ -324,6 +328,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigDiffer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HeckelDiff.framework",
@@ -359,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA732D4F2098591900790B9B /* DifferMultiSectionTableViewController.swift in Sources */,
+				EA43181B20995B12009BB737 /* DataSourcesSingleSectionTableViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* DifferSingleSectionTableViewController.swift in Sources */,
 				EA4318192099441A009BB737 /* HeckelDiffSingleSectionTableViewController.swift in Sources */,
 				EA732D4B20980CB900790B9B /* Data.swift in Sources */,
