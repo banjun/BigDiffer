@@ -31,4 +31,10 @@ Pod::Spec.new do |s|
     ss.dependency 'BigDiffer/Core'
     ss.dependency 'HeckelDiff'
   end
+
+  s.subspec 'DeepDiff' do |ss|
+    ss.source_files = 'BigDiffer/Classes/DeepDiff/**/*.swift'
+    ss.dependency 'BigDiffer/Core'
+    ss.dependency 'DeepDiff'
+  end
 end
