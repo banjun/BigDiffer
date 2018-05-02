@@ -16,8 +16,19 @@ Pod::Spec.new do |s|
 
   s.swift_version = '4.1'
 
+  s.subspec 'Core' do |ss|
+    ss.source_files = 'BigDiffer/Classes/Core/**/*.swift'
+  end
+
   s.subspec 'Differ' do |ss|
-    ss.source_files = 'BigDiffer/Classes/Differ/**/*'
+    ss.source_files = 'BigDiffer/Classes/Differ/**/*.swift'
+    ss.dependency 'BigDiffer/Core'
     ss.dependency 'Differ'
- end
+  end
+
+  s.subspec 'HeckelDiff' do |ss|
+    ss.source_files = 'BigDiffer/Classes/HeckelDiff/**/*.swift'
+    ss.dependency 'BigDiffer/Core'
+    ss.dependency 'HeckelDiff'
+  end
 end

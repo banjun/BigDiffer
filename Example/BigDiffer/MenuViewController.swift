@@ -6,18 +6,26 @@ final class MenuViewController: FormViewController {
 
         title = "BigDiffer Sandbox"
 
-        form +++ Section()
+        form +++ Section("tonyarnold/Differ")
             <<< LabelRow {
                 $0.title = "Single-Section TableView"
                 $0.onCellSelection { [unowned self] _, _ in
-                    self.show(SingleSectionTableViewController(style: .plain), sender: nil)
+                    self.show(DifferSingleSectionTableViewController(style: .plain), sender: nil)
                 }
                 $0.cell.accessoryType = .disclosureIndicator
             }
             <<< LabelRow {
                 $0.title = "Multi-Section TableView"
                 $0.onCellSelection { [unowned self] _, _ in
-                    self.show(MultiSectionTableViewController(style: .plain), sender: nil)
+                    self.show(DifferMultiSectionTableViewController(style: .plain), sender: nil)
+                }
+                $0.cell.accessoryType = .disclosureIndicator
+            }
+            +++ Section("mcudich/HeckelDiff")
+            <<< LabelRow {
+                $0.title = "Single-Section TableView"
+                $0.onCellSelection { [unowned self] _, _ in
+                    self.show(HeckelDiffSingleSectionTableViewController(style: .plain), sender: nil)
                 }
                 $0.cell.accessoryType = .disclosureIndicator
         }
@@ -29,5 +37,9 @@ final class MenuViewController: FormViewController {
         super.viewWillAppear(animated)
 
         navigationController?.setToolbarHidden(true, animated: animated)
+    }
+
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        (view as? UITableViewHeaderFooterView)?.textLabel?.text = form[section].header?.title
     }
 }

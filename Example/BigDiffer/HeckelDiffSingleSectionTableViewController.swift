@@ -1,15 +1,18 @@
 import UIKit
-import Differ
 import BigDiffer
 
-final class SingleSectionTableViewController: UITableViewController, UISearchResultsUpdating {
-    private var datasource: [String] = [] {
-        didSet {filteredDatasource = searchText.isEmpty ? datasource : datasource.filter {$0.contains(searchText)}}
+private struct Item: Hashable {
+    let value: String
+}
+
+final class HeckelDiffSingleSectionTableViewController: UITableViewController, UISearchResultsUpdating {
+    private var datasource: [Item] = [] {
+        didSet {filteredDatasource = searchText.isEmpty ? datasource : datasource.filter {$0.value.contains(searchText)}}
     }
     private var searchText: String = "" {
-        didSet {filteredDatasource = searchText.isEmpty ? datasource : datasource.filter {$0.contains(searchText)}}
+        didSet {filteredDatasource = searchText.isEmpty ? datasource : datasource.filter {$0.value.contains(searchText)}}
     }
-    private var filteredDatasource: [String] = [] {
+    private var filteredDatasource: [Item] = [] {
         didSet {diffAndPatch(old: oldValue, new: filteredDatasource)}
     }
 
@@ -30,6 +33,8 @@ final class SingleSectionTableViewController: UITableViewController, UISearchRes
         if #available(iOS 11, *) {
             let sc = UISearchController(searchResultsController: nil)
             sc.searchResultsUpdater = self
+            sc.searchBar.autocorrectionType = .no
+            sc.searchBar.autocapitalizationType = .none
             navigationItem.searchController = sc
         }
     }
@@ -41,39 +46,34 @@ final class SingleSectionTableViewController: UITableViewController, UISearchRes
         navigationController?.navigationBar.titleTextAttributes = [.font: UIFont.systemFont(ofSize: 12)]
     }
 
-    func diffAndPatch(old: [String], new: [String]) {
+    private func diffAndPatch(old: [Item], new: [Item]) {
         let started = Date()
 
-        let diff = old.extendedDiff(new)
-        let diffed = Date()
-
-        // tableView.apply(diff)
-        tableView.applyWithOptimizations(diff)
+        // tableView.applyDiff(old, new, inSection: 0, withAnimation: .automatic, reloadUpdated: true)
+        tableView.applyDiffWithOptimizations(old, new, inSection: 0, withAnimation: .automatic, reloadUpdated: true)
         let applied = Date()
 
-        let measures = String(format: "diff: %.1fs, apply: %.1fs, total: %.1fs",
-                              diffed.timeIntervalSince(started),
-                              applied.timeIntervalSince(diffed),
+        let measures = String(format: "(diff + apply) total: %.1fs",
                               applied.timeIntervalSince(started))
         title = "\(filteredDatasource.count) Rows (\(measures))"
     }
 
     @objc private func updateTo1Row() {
-        datasource = Array(Data.gemojiFoodsByPeople.prefix(1))
+        datasource = Array(Data.gemojiFoodsByPeople.prefix(1).map {Item(value: $0)})
     }
 
     @objc private func updateTo5Row() {
-        datasource = Array(Data.gemojiFoodsByPeople.dropFirst(5).prefix(5))
+        datasource = Array(Data.gemojiFoodsByPeople.dropFirst(5).prefix(5).map {Item(value: $0)})
     }
 
     @objc private func updateTo5000Row() {
-        datasource = Array(Data.gemojiFoodsByPeople.prefix(5000))
+        datasource = Array(Data.gemojiFoodsByPeople.prefix(5000).map {Item(value: $0)})
     }
 
     @objc private func sortRows() {
         filteredDatasource.sort {
-            $0.components(separatedBy: CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyz0123456789").inverted).filter {!$0.isEmpty}.joined(separator: " ")
-                < $1.components(separatedBy: CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyz0123456789").inverted).filter {!$0.isEmpty}.joined(separator: " ")
+            $0.value.components(separatedBy: CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyz0123456789").inverted).filter {!$0.isEmpty}.joined(separator: " ")
+                < $1.value.components(separatedBy: CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyz0123456789").inverted).filter {!$0.isEmpty}.joined(separator: " ")
         }
     }
 
@@ -87,7 +87,7 @@ final class SingleSectionTableViewController: UITableViewController, UISearchRes
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
-        cell.textLabel?.text = filteredDatasource[indexPath.row]
+        cell.textLabel?.text = filteredDatasource[indexPath.row].value
         return cell
     }
 
@@ -95,4 +95,3 @@ final class SingleSectionTableViewController: UITableViewController, UISearchRes
         searchText = searchController.searchBar.text ?? ""
     }
 }
-

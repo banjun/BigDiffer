@@ -16,7 +16,7 @@ struct SectionedValue: Equatable, RandomAccessCollection {
     }
 }
 
-final class MultiSectionTableViewController: UITableViewController {
+final class DifferMultiSectionTableViewController: UITableViewController {
     var datasource: [SectionedValue] = [] {
         didSet {diffAndPatch(old: oldValue, new: datasource)}
     }

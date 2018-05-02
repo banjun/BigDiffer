@@ -8,15 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* SingleSectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* SingleSectionTableViewController.swift */; };
+		607FACD81AFB9204008FA782 /* DifferSingleSectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* DifferSingleSectionTableViewController.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		67B7CF5203BBDF45BC61AD16 /* Pods_BigDiffer_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D3B20FA781032BA1A5ED58 /* Pods_BigDiffer_Tests.framework */; };
 		A1AEF63F8E6DE4BC200764CC /* Pods_BigDiffer_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25ADB460A1737D876ADE02AF /* Pods_BigDiffer_Example.framework */; };
+		EA4318192099441A009BB737 /* HeckelDiffSingleSectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4318182099441A009BB737 /* HeckelDiffSingleSectionTableViewController.swift */; };
 		EA732D4B20980CB900790B9B /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA732D4A20980CB900790B9B /* Data.swift */; };
 		EA732D4D2098583300790B9B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA732D4C2098583300790B9B /* MenuViewController.swift */; };
-		EA732D4F2098591900790B9B /* MultiSectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA732D4E2098591800790B9B /* MultiSectionTableViewController.swift */; };
+		EA732D4F2098591900790B9B /* DifferMultiSectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA732D4E2098591800790B9B /* DifferMultiSectionTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,7 @@
 		607FACD01AFB9204008FA782 /* BigDiffer_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigDiffer_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* SingleSectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSectionTableViewController.swift; sourceTree = "<group>"; };
+		607FACD71AFB9204008FA782 /* DifferSingleSectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifferSingleSectionTableViewController.swift; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* BigDiffer_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigDiffer_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,9 +49,10 @@
 		9AB3DB2B8DECA16BFFB1004C /* Pods-BigDiffer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigDiffer_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BigDiffer_Example/Pods-BigDiffer_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D301249CE66A7B9BF6945455 /* Pods-BigDiffer_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigDiffer_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-BigDiffer_Example/Pods-BigDiffer_Example.release.xcconfig"; sourceTree = "<group>"; };
 		E41189EA0EEF01063D7EA02A /* Pods-BigDiffer_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigDiffer_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BigDiffer_Tests/Pods-BigDiffer_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		EA4318182099441A009BB737 /* HeckelDiffSingleSectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeckelDiffSingleSectionTableViewController.swift; sourceTree = "<group>"; };
 		EA732D4A20980CB900790B9B /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		EA732D4C2098583300790B9B /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		EA732D4E2098591800790B9B /* MultiSectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSectionTableViewController.swift; sourceTree = "<group>"; };
+		EA732D4E2098591800790B9B /* DifferMultiSectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifferMultiSectionTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +111,9 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				EA732D4C2098583300790B9B /* MenuViewController.swift */,
 				EA732D4A20980CB900790B9B /* Data.swift */,
-				607FACD71AFB9204008FA782 /* SingleSectionTableViewController.swift */,
-				EA732D4E2098591800790B9B /* MultiSectionTableViewController.swift */,
+				607FACD71AFB9204008FA782 /* DifferSingleSectionTableViewController.swift */,
+				EA732D4E2098591800790B9B /* DifferMultiSectionTableViewController.swift */,
+				EA4318182099441A009BB737 /* HeckelDiffSingleSectionTableViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -316,12 +319,14 @@
 				"${BUILT_PRODUCTS_DIR}/BigDiffer/BigDiffer.framework",
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/HeckelDiff/HeckelDiff.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigDiffer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HeckelDiff.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -353,8 +358,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA732D4F2098591900790B9B /* MultiSectionTableViewController.swift in Sources */,
-				607FACD81AFB9204008FA782 /* SingleSectionTableViewController.swift in Sources */,
+				EA732D4F2098591900790B9B /* DifferMultiSectionTableViewController.swift in Sources */,
+				607FACD81AFB9204008FA782 /* DifferSingleSectionTableViewController.swift in Sources */,
+				EA4318192099441A009BB737 /* HeckelDiffSingleSectionTableViewController.swift in Sources */,
 				EA732D4B20980CB900790B9B /* Data.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				EA732D4D2098583300790B9B /* MenuViewController.swift in Sources */,

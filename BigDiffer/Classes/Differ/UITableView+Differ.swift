@@ -1,9 +1,11 @@
 import UIKit
 import Differ
 
-public enum Threshold {
-    public static let maxRowsToCalculateDiffs = 3000 // Differ cost: O((N+M)*D)
-    public static let maxDeletionsPreservingAnimations = 300 // UITableView.endUpdates cost: dominated by deletions
+extension Threshold {
+    public enum Differ {
+        public static let maxRowsToCalculateDiffs = 3000 // Differ cost: O((N+M)*D)
+        public static let maxDeletionsPreservingAnimations = 300 // UITableView.endUpdates cost: dominated by deletions
+    }
 }
 
 extension UITableView {
@@ -12,7 +14,7 @@ extension UITableView {
         deletionAnimation: UITableViewRowAnimation = .automatic,
         insertionAnimation: UITableViewRowAnimation = .automatic,
         indexPathTransform: (IndexPath) -> IndexPath = { $0 },
-        maxDeletionsPreservingAnimations: Int = Threshold.maxDeletionsPreservingAnimations
+        maxDeletionsPreservingAnimations: Int = Threshold.Differ.maxDeletionsPreservingAnimations
         ) {
         let update = BatchUpdate(diff: diff, indexPathTransform: indexPathTransform)
 
@@ -44,8 +46,8 @@ extension UITableView {
         deletionAnimation: UITableViewRowAnimation = .automatic,
         insertionAnimation: UITableViewRowAnimation = .automatic,
         indexPathTransform: (IndexPath) -> IndexPath = { $0 },
-        maxRowsToCalculateDiffs: Int = Threshold.maxRowsToCalculateDiffs,
-        maxDeletionsPreservingAnimations: Int = Threshold.maxDeletionsPreservingAnimations
+        maxRowsToCalculateDiffs: Int = Threshold.Differ.maxRowsToCalculateDiffs,
+        maxDeletionsPreservingAnimations: Int = Threshold.Differ.maxDeletionsPreservingAnimations
         ) where T.Iterator.Element: Equatable {
         guard oldData.count + newData.count <= maxRowsToCalculateDiffs else {
             reloadSections([0], with: .none)
@@ -69,7 +71,7 @@ extension UITableView {
         sectionInsertionAnimation: UITableViewRowAnimation = .automatic,
         indexPathTransform: (IndexPath) -> IndexPath,
         sectionTransform: (Int) -> Int,
-        maxDeletionsPreservingAnimations: Int = Threshold.maxDeletionsPreservingAnimations
+        maxDeletionsPreservingAnimations: Int = Threshold.Differ.maxDeletionsPreservingAnimations
         ) {
         let update = NestedBatchUpdate(diff: diff, indexPathTransform: indexPathTransform, sectionTransform: sectionTransform)
 
@@ -100,8 +102,8 @@ extension UITableView {
         sectionInsertionAnimation: UITableViewRowAnimation = .automatic,
         indexPathTransform: (IndexPath) -> IndexPath = { $0 },
         sectionTransform: (Int) -> Int = { $0 },
-        maxRowsToCalculateDiffs: Int = Threshold.maxRowsToCalculateDiffs,
-        maxDeletionsPreservingAnimations: Int = Threshold.maxDeletionsPreservingAnimations
+        maxRowsToCalculateDiffs: Int = Threshold.Differ.maxRowsToCalculateDiffs,
+        maxDeletionsPreservingAnimations: Int = Threshold.Differ.maxDeletionsPreservingAnimations
         )
         where T.Iterator.Element: Collection,
         T.Iterator.Element: Equatable,
