@@ -1,6 +1,8 @@
 import UIKit
 import ListDiff
 
+public typealias Diffable = ListDiff.Diffable
+
 extension Threshold {
     public enum BigDiffer {
         public static let maxDeletionsPreservingAnimations = 300 // UITableView.endUpdates cost: dominated by deletions

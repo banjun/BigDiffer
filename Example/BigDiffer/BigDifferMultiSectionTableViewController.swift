@@ -1,6 +1,5 @@
 import UIKit
 import BigDiffer
-import ListDiff
 
 private struct SectionedValue: RandomAccessCollection, BigDiffableSection {
     // NOTE: best practice: using Generics makes slower unless specialized
