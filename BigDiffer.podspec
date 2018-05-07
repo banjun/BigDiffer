@@ -1,9 +1,14 @@
 Pod::Spec.new do |s|
   s.name             = 'BigDiffer'
-  s.version          = '0.2.0'
-  s.summary          = 'reconciliation optimizer for diff-and-patch libs on UIKit & AppKit'
+  s.version          = '0.3.0'
+  s.summary          = 'diff & patch for multi-section UITableView with large number of rows (changes between 0~5000)'
   s.description      = <<-DESC
-  BigDiffer optimize the diffs to patch on UITableView and other Views to avoid performance issue especially for usecase where there is big number of diffs
+  * Multi section diff & patch for UITableView
+  * Fast linear complexity diff algorithm a.k.a. Heckel, by making use of ListDiff
+  * Optimize diff with some heuristics for large number of rows
+  * Skip diffing for currently invisible sections (use reload)
+    * Section-wise diff for currently (partially or completely) visible sections
+    * Skip applying diff when many deletions detected (> 300), for each section
                        DESC
   s.homepage         = 'https://github.com/banjun/BigDiffer'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
