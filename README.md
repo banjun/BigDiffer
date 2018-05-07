@@ -5,11 +5,24 @@
 [![License](https://img.shields.io/cocoapods/l/BigDiffer.svg?style=flat)](https://cocoapods.org/pods/BigDiffer)
 [![Platform](https://img.shields.io/cocoapods/p/BigDiffer.svg?style=flat)](https://cocoapods.org/pods/BigDiffer)
 
-## Example
+## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+```swift
+tableView.reloadUsingBigDiff(old: old, new: new)
+```
 
-## Requirements
+where old & new are `[T]` where `T: BigDiffableSection` (c.f. `ListDiff.Diffable`). See in detail at [example view controller code](Example/BigDiffer/BigDifferMultiSectionTableViewController.swift).
+Example project has some workarounds for other diff libraries in terms of applying large number of diffs.
+
+
+## Features
+
+* Multi section diff & patch for UITableView
+* Fast linear complexity diff algorithm a.k.a. Heckel, by making use of [ListDiff](https://github.com/lxcid/ListDiff)
+* Optimize diff with some heuristics for large number of rows
+  * Skip diffing for currently invisible sections (use reload)
+  * Section-wise diff for currently (partially or completely) visible sections
+  * Skip applying diff when many deletions detected (> 300), for each section
 
 ## Installation
 
@@ -20,9 +33,15 @@ it, simply add the following line to your Podfile:
 pod 'BigDiffer'
 ```
 
+Alternatively, use subspecs to use other diff & patch libraries with optimized fallbacks that reloadData for a large number of diffs (row deletions).
+
+```ruby
+pod 'BigDiffer/Differ'
+```
+
 ## Author
 
-banjun, banjun@gmail.com
+@banjun
 
 ## License
 
