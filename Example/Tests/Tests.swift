@@ -1,49 +1,132 @@
-// https://github.com/Quick/Quick
-
 import Quick
 import Nimble
 import BigDiffer
+import ListDiff
+import KIF
+
+private struct SectionedValue: RandomAccessCollection, BigDiffableSection {
+    // NOTE: best practice: using Generics makes slower unless specialized
+    var section: String
+    var values: [String]
+
+    // NOTE: fast index is provided by conforming RandomAccessCollection
+    var startIndex: Int {return values.startIndex}
+    var endIndex: Int {return values.endIndex}
+    func index(after i: Int) -> Int {return i + 1}
+    subscript(position: Int) -> String {return values[position]}
+
+    var diffIdentifier: AnyHashable {return section.diffIdentifier}
+}
+extension String: BigDiffer.Diffable {
+    public var diffIdentifier: AnyHashable {return hashValue}
+}
+
+final class TestableTableViewController: UITableViewController {
+    fileprivate var datasource: [SectionedValue] = [] {
+        didSet {
+            tableView.reloadUsingBigDiff(old: oldValue, new: datasource)
+        }
+    }
+
+    // recorder
+    fileprivate var cellForRowHistory: [IndexPath] = []
+
+    override func numberOfSections(in tableView: UITableView) -> Int {return datasource.count}
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {return datasource[section].count}
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        cellForRowHistory.append(indexPath)
+
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        cell.textLabel?.text = datasource[indexPath.section][indexPath.row]
+        return cell
+    }
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {return datasource[section].section}
+
+    func presentOnNewWindow(frame: CGRect = CGRect(x: 0, y: 0, width: 320, height: 320)) {
+        let window = UIWindow(frame: frame)
+        window.rootViewController = self
+        window.makeKeyAndVisible()
+    }
+}
+
+extension KIFUITestActor {
+    func waitForCell(text: String, in tableView: UITableView) -> (cell: UITableViewCell, indexPath: IndexPath)? {
+        guard let cell = waitForView(withAccessibilityLabel: text) as? UITableViewCell else { return nil }
+        guard let indexPath = tableView.indexPath(for: cell) else { return nil }
+        return (cell, indexPath)
+    }
+}
 
 class TableOfContentsSpec: QuickSpec {
     override func spec() {
-        describe("these will fail") {
+        beforeSuite {
+            KIFEnableAccessibility()
+        }
 
-            it("can do maths") {
-                expect(1) == 2
+        beforeEach {
+            UIApplication.shared.delegate?.window??.makeKeyAndVisible()
+        }
+
+        context("multi-section") {
+            it("cold load") {
+                let ttvc = TestableTableViewController(style: .plain)
+                ttvc.presentOnNewWindow()
+                ttvc.datasource = [
+                    SectionedValue(section: "S1", values: ["A", "B"]),
+                    SectionedValue(section: "S2", values: ["P", "Q"])]
+
+                let tester = KIFUITestActor(file: #file, line: #line, delegate: self)!
+                expect(tester.waitForCell(text: "A", in: ttvc.tableView)?.indexPath) == IndexPath(row: 0, section: 0)
+                expect(tester.waitForCell(text: "B", in: ttvc.tableView)?.indexPath) == IndexPath(row: 1, section: 0)
+                expect(tester.waitForCell(text: "P", in: ttvc.tableView)?.indexPath) == IndexPath(row: 0, section: 1)
+                expect(tester.waitForCell(text: "Q", in: ttvc.tableView)?.indexPath) == IndexPath(row: 1, section: 1)
             }
 
-            it("can read") {
-                expect("number") == "string"
+            it("load inserted row") {
+                let tester = KIFUITestActor(file: #file, line: #line, delegate: self)!
+
+                let ttvc = TestableTableViewController(style: .plain)
+                ttvc.presentOnNewWindow()
+                ttvc.datasource = [
+                    SectionedValue(section: "S1", values: ["A", "B"]),
+                    SectionedValue(section: "S2", values: ["P", "Q"])]
+                tester.waitForAnimationsToFinish()
+
+                expect(ttvc.cellForRowHistory.count) == 4
+                ttvc.cellForRowHistory.removeAll()
+
+                ttvc.datasource = [
+                    SectionedValue(section: "S1", values: ["A", "B", "C"]),
+                    SectionedValue(section: "S2", values: ["P", "Q"])]
+                tester.waitForAnimationsToFinish()
+
+                expect(ttvc.cellForRowHistory) == [IndexPath(row: 2, section: 0)]
+                expect(tester.waitForCell(text: "C", in: ttvc.tableView)?.indexPath) == IndexPath(row: 2, section: 0)
             }
 
-            it("will eventually fail") {
-                expect("time").toEventually( equal("done") )
-            }
-            
-            context("these will pass") {
+            it("reload invisible section") {
+                let tester = KIFUITestActor(file: #file, line: #line, delegate: self)!
 
-                it("can do maths") {
-                    expect(23) == 23
-                }
+                let ttvc = TestableTableViewController(style: .plain)
+                ttvc.presentOnNewWindow()
+                ttvc.datasource = [
+                    SectionedValue(section: "S1", values: (UnicodeScalar("A").value...UnicodeScalar("Z").value).map {String(UnicodeScalar($0)!)}),
+                    SectionedValue(section: "S2", values: ["P", "Q"])]
+                tester.waitForAnimationsToFinish()
 
-                it("can read") {
-                    expect("🐮") == "🐮"
-                }
+                expect(ttvc.tableView.indexPathsForVisibleRows).notTo(contain([
+                    IndexPath(row: 0, section: 1),
+                    IndexPath(row: 1, section: 1)]))
+                ttvc.cellForRowHistory.removeAll()
 
-                it("will eventually pass") {
-                    var time = "passing"
+                ttvc.datasource = [
+                    SectionedValue(section: "S1", values: ["A", "B"]),
+                    SectionedValue(section: "S2", values: ["P", "Q"])]
+                tester.waitForAnimationsToFinish()
 
-                    DispatchQueue.main.async {
-                        time = "done"
-                    }
-
-                    waitUntil { done in
-                        Thread.sleep(forTimeInterval: 0.5)
-                        expect(time) == "done"
-
-                        done()
-                    }
-                }
+                expect(Set(ttvc.cellForRowHistory)) == Set([
+                    IndexPath(row: 0, section: 1), // unchanged but reloaded because of invisibility before
+                    IndexPath(row: 1, section: 1)]) // unchanged but reloaded because of invisibility before
             }
         }
     }

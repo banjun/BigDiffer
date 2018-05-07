@@ -18,6 +18,9 @@ PODS:
   - Differ (1.2.2)
   - Eureka (4.1.1)
   - HeckelDiff (0.2.3)
+  - KIF (3.7.3):
+    - KIF/Core (= 3.7.3)
+  - KIF/Core (3.7.3)
   - ListDiff (0.1.0)
   - Nimble (7.1.1)
   - Quick (1.3.0)
@@ -28,6 +31,7 @@ DEPENDENCIES:
   - BigDiffer/Differ (from `../`)
   - BigDiffer/HeckelDiff (from `../`)
   - Eureka
+  - KIF
   - Nimble
   - Quick
 
@@ -37,6 +41,7 @@ SPEC REPOS:
     - Differ
     - Eureka
     - HeckelDiff
+    - KIF
     - ListDiff
     - Nimble
     - Quick
@@ -51,10 +56,11 @@ SPEC CHECKSUMS:
   Differ: 5ac7b6d0d3a60274b52a0ef087ec0e411b57db2c
   Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
   HeckelDiff: 1170b3c499825d7c7d0478fd7ad779b07d0ad915
+  KIF: 4c23b5d24dba24d3cb6dbb9c7d325b31e526ba4a
   ListDiff: 8a29c2ae3c8370cc989b6d6d50bb40d58c4e9ede
   Nimble: 391f07782af4b37914f9bd7b2ffbb952731b8202
   Quick: 03278013f71aa05fe9ecabc94fbcc6835f1ee76f
 
-PODFILE CHECKSUM: 698dc7a46ed838822b0ad70cc51ade0f580cf7bb
+PODFILE CHECKSUM: 44f71d85cefae9b92a21a6da825aba9df2b99a69
 
 COCOAPODS: 1.5.0

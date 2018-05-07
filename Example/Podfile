@@ -13,5 +13,6 @@ target 'BigDiffer_Example' do
 
     pod 'Quick'
     pod 'Nimble'
+    pod 'KIF'
   end
 end
