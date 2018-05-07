@@ -131,3 +131,77 @@ class TableOfContentsSpec: QuickSpec {
         }
     }
 }
+
+final class PerformanceTest: XCTestCase {
+    override func setUp() {
+        super.setUp()
+        KIFEnableAccessibility()
+    }
+
+    func testLargeNumberToLargeNumber() {
+        let tester = KIFUITestActor(file: #file, line: #line, delegate: self)!
+        UIApplication.shared.delegate?.window??.makeKeyAndVisible()
+
+        let ttvc = TestableTableViewController(style: .plain)
+        ttvc.presentOnNewWindow()
+
+        let all = Array((0..<5000).map {String($0)})
+        var copied = all
+        var shuffled: [String] = []
+        while !copied.isEmpty {
+            shuffled.append(copied.remove(at: Int(arc4random_uniform(UInt32(copied.count)))))
+        }
+
+        measureMetrics([.wallClockTime], automaticallyStartMeasuring: false) {
+            ttvc.datasource = [SectionedValue(section: "S1", values: all)]
+            tester.waitForAnimationsToFinish()
+
+            startMeasuring()
+            ttvc.datasource = [SectionedValue(section: "S1", values: shuffled)]
+            tester.waitForAnimationsToFinish() // should take major time to animate, but we need total time
+        }
+    }
+
+    // NOTE: test for case that: many deletions cause significant performance issue without fallbacks
+    func testLargeNumberToZero() {
+        let tester = KIFUITestActor(file: #file, line: #line, delegate: self)!
+        UIApplication.shared.delegate?.window??.makeKeyAndVisible()
+
+        let ttvc = TestableTableViewController(style: .plain)
+        ttvc.presentOnNewWindow()
+
+        let before = Array((0..<5000).map {String($0)})
+        let after: [String] = []
+
+        measureMetrics([.wallClockTime], automaticallyStartMeasuring: false) {
+            ttvc.datasource = [SectionedValue(section: "S1", values: before)]
+            tester.waitForAnimationsToFinish()
+
+            startMeasuring()
+            ttvc.datasource = [SectionedValue(section: "S1", values: after)]
+            tester.waitForAnimationsToFinish() // should take major time to animate, but we need total time
+        }
+    }
+
+    // NOTE: test for case that of non-zero case: many deletions cause significant performance issue without fallbacks
+    func testLargeNumberToOne() {
+        let tester = KIFUITestActor(file: #file, line: #line, delegate: self)!
+        UIApplication.shared.delegate?.window??.makeKeyAndVisible()
+
+        let ttvc = TestableTableViewController(style: .plain)
+        ttvc.presentOnNewWindow()
+
+
+        let before = Array((0..<5000).map {String($0)})
+        let after: [String] = ["0"]
+
+        measureMetrics([.wallClockTime], automaticallyStartMeasuring: false) {
+            ttvc.datasource = [SectionedValue(section: "S1", values: before)]
+            tester.waitForAnimationsToFinish()
+
+            startMeasuring()
+            ttvc.datasource = [SectionedValue(section: "S1", values: after)]
+            tester.waitForAnimationsToFinish() // should take major time to animate, but we need total time
+        }
+    }
+}
