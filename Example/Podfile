@@ -3,6 +3,9 @@ use_frameworks!
 
 target 'BigDiffer_Example' do
   pod 'BigDiffer', :path => '../'
+  pod 'BigDiffer/Differ', :path => '../'
+  pod 'BigDiffer/HeckelDiff', :path => '../'
+  pod 'BigDiffer/DeepDiff', :path => '../'
   pod 'Eureka'
 
   target 'BigDiffer_Tests' do

@@ -22,7 +22,7 @@ extension String: Diffable {
     public var diffIdentifier: AnyHashable {return hashValue}
 }
 
-final class ExperimentalMultiSectionTableViewController: UITableViewController {
+final class BigDifferMultiSectionTableViewController: UITableViewController {
     private var datasource: [SectionedValue] = [] {
         didSet {diffAndPatch(old: oldValue, new: datasource)}
     }

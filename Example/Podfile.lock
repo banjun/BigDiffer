@@ -1,10 +1,6 @@
 PODS:
   - BigDiffer (0.1.0):
     - BigDiffer/BigDiffer (= 0.1.0)
-    - BigDiffer/Core (= 0.1.0)
-    - BigDiffer/DeepDiff (= 0.1.0)
-    - BigDiffer/Differ (= 0.1.0)
-    - BigDiffer/HeckelDiff (= 0.1.0)
   - BigDiffer/BigDiffer (0.1.0):
     - BigDiffer/Core
     - ListDiff
@@ -28,6 +24,9 @@ PODS:
 
 DEPENDENCIES:
   - BigDiffer (from `../`)
+  - BigDiffer/DeepDiff (from `../`)
+  - BigDiffer/Differ (from `../`)
+  - BigDiffer/HeckelDiff (from `../`)
   - Eureka
   - Nimble
   - Quick
@@ -47,7 +46,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BigDiffer: 9e4f30dcb86b3c6ef81ccea5e6eb590f30e0017c
+  BigDiffer: 78b2b33c07f0a8e96c2fdd324af5a955a075f8b3
   DeepDiff: 0ee83ac6942d441f677c22e981548c6e0937f2b6
   Differ: 5ac7b6d0d3a60274b52a0ef087ec0e411b57db2c
   Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
@@ -56,6 +55,6 @@ SPEC CHECKSUMS:
   Nimble: 391f07782af4b37914f9bd7b2ffbb952731b8202
   Quick: 03278013f71aa05fe9ecabc94fbcc6835f1ee76f
 
-PODFILE CHECKSUM: 07dd580205ee5a29364ac4f7f4b694162c8772cf
+PODFILE CHECKSUM: 698dc7a46ed838822b0ad70cc51ade0f580cf7bb
 
 COCOAPODS: 1.5.0

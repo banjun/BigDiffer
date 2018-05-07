@@ -6,7 +6,14 @@ final class MenuViewController: FormViewController {
 
         title = "BigDiffer Sandbox"
 
-        form +++ Section("tonyarnold/Differ")
+        form +++ Section("banjun/BigDiffer")
+            <<< LabelRow {
+                $0.title = "Muti-Section TableView"
+                $0.onCellSelection { [unowned self] _, _ in
+                    self.show(BigDifferMultiSectionTableViewController(style: .plain), sender: nil)
+                }
+                $0.cell.accessoryType = .disclosureIndicator
+            } +++ Section("tonyarnold/Differ + workaround")
             <<< LabelRow {
                 $0.title = "Single-Section TableView"
                 $0.onCellSelection { [unowned self] _, _ in
@@ -21,7 +28,7 @@ final class MenuViewController: FormViewController {
                 }
                 $0.cell.accessoryType = .disclosureIndicator
             }
-            +++ Section("mcudich/HeckelDiff")
+            +++ Section("mcudich/HeckelDiff + workaround")
             <<< LabelRow {
                 $0.title = "Single-Section TableView"
                 $0.onCellSelection { [unowned self] _, _ in
@@ -29,19 +36,11 @@ final class MenuViewController: FormViewController {
                 }
                 $0.cell.accessoryType = .disclosureIndicator
             }
-            +++ Section("onmyway133/DeepDiff")
+            +++ Section("onmyway133/DeepDiff + workaround")
             <<< LabelRow {
                 $0.title = "Single-Section TableView"
                 $0.onCellSelection { [unowned self] _, _ in
                     self.show(DeepDiffSingleSectionTableViewController(style: .plain), sender: nil)
-                }
-                $0.cell.accessoryType = .disclosureIndicator
-        }
-            +++ Section("experimental")
-            <<< LabelRow {
-                $0.title = "Muti-Section TableView"
-                $0.onCellSelection { [unowned self] _, _ in
-                    self.show(ExperimentalMultiSectionTableViewController(style: .plain), sender: nil)
                 }
                 $0.cell.accessoryType = .disclosureIndicator
         }

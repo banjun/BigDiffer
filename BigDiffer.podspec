@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'BigDiffer'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'reconciliation optimizer for diff-and-patch libs on UIKit & AppKit'
   s.description      = <<-DESC
   BigDiffer optimize the diffs to patch on UITableView and other Views to avoid performance issue especially for usecase where there is big number of diffs
@@ -15,6 +15,7 @@ Pod::Spec.new do |s|
   # s.osx.deployment_target = '10.12'
 
   s.swift_version = '4.1'
+  s.default_subspec = 'BigDiffer'
 
   s.subspec 'Core' do |ss|
     ss.source_files = 'BigDiffer/Classes/Core/**/*.swift'
