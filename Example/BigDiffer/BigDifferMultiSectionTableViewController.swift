@@ -12,9 +12,7 @@ private struct SectionedValue: RandomAccessCollection, BigDiffableSection {
     func index(after i: Int) -> Int {return i + 1}
     subscript(position: Int) -> String {return values[position]}
 
-    static func == (lhs: SectionedValue, rhs: SectionedValue) -> Bool {
-        return lhs.section == rhs.section
-    }
+    var diffIdentifier: AnyHashable {return section.diffIdentifier}
 }
 
 extension String: Diffable {

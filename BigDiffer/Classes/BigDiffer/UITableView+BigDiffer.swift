@@ -1,7 +1,7 @@
 import UIKit
 
 extension UITableView {
-    public func bigDiff<T: BigDiffableSections>(old: T, new: T, maxDeletionsPreservingAnimations: Int = Threshold.BigDiffer.maxDeletionsPreservingAnimations) -> Changeset? {
+    public func bigDiff<T: BigDiffableSection>(old: [T], new: [T], maxDeletionsPreservingAnimations: Int = Threshold.BigDiffer.maxDeletionsPreservingAnimations) -> Changeset? {
         return Changeset(old: old, new: new, visibleIndexPaths: indexPathsForVisibleRows ?? [], maxDeletionsPreservingAnimations: maxDeletionsPreservingAnimations)
     }
 
@@ -29,9 +29,9 @@ extension UITableView {
         reloadSections(.init(bigDiff.reloadableSectionIndices + bigDiff.fallbackedToReloadSectionIndices), with: sectionReloadingAnimation)
     }
 
-    public func reloadUsingBigDiff<T: BigDiffableSections>(
-        old: T,
-        new: T,
+    public func reloadUsingBigDiff<T: BigDiffableSection>(
+        old: [T],
+        new: [T],
         rowDeletionAnimation: UITableViewRowAnimation = .fade,
         rowInsertionAnimation: UITableViewRowAnimation = .fade,
         sectionDeletionAnimation: UITableViewRowAnimation = .fade,

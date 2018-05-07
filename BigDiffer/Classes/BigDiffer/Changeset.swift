@@ -10,8 +10,7 @@ extension Threshold {
 }
 
 public protocol BigDiffableSections: Collection where Index == Int, Element: BigDiffableSection {}
-public protocol BigDiffableSection: Collection, Equatable where Element: Diffable & Equatable {}
-extension Array: BigDiffableSections where Element: BigDiffableSection {}
+public protocol BigDiffableSection: Collection, Diffable where Element: Diffable & Equatable {}
 
 public struct Changeset {
     public var deletedSectionIndices: [Int] = []
@@ -24,14 +23,17 @@ public struct Changeset {
 }
 
 extension Changeset {
-    public init?<T: BigDiffableSections>(old: T, new: T, visibleIndexPaths: [IndexPath], maxDeletionsPreservingAnimations: Int = Threshold.BigDiffer.maxDeletionsPreservingAnimations) {
+    public init?<T: BigDiffableSection>(old: [T], new: [T], visibleIndexPaths: [IndexPath], maxDeletionsPreservingAnimations: Int = Threshold.BigDiffer.maxDeletionsPreservingAnimations) {
         guard !visibleIndexPaths.isEmpty else { return nil }
 
+        let oldDiffIdentifiers = old.map {$0.diffIdentifier}
+        let newDiffIdentifiers = new.map {$0.diffIdentifier}
+
         // deleted sections on old sections
-        deletedSectionIndices = old.enumerated().filter {!new.contains($0.element)}.map {$0.offset}
+        deletedSectionIndices = oldDiffIdentifiers.enumerated().filter {!newDiffIdentifiers.contains ($0.element)}.map {$0.offset}
 
         // inserted sections on new sections
-        insertedSectionIndices = new.enumerated().filter {!old.contains($0.element)}.map {$0.offset}
+        insertedSectionIndices = newDiffIdentifiers.enumerated().filter {!oldDiffIdentifiers.contains($0.element)}.map {$0.offset}
 
         // sections are reloadable if completely invisible (omitting move-in animations for performance)
         let remainingSectionIndices = (0..<old.count).filter {!deletedSectionIndices.contains($0)}
@@ -42,7 +44,7 @@ extension Changeset {
         // calculate section-wise diff
         needsInspectionSectionIndices.forEach { oi in
             let o = old[oi]
-            let ni = new.index {$0 == o}!
+            let ni = new.index {$0.diffIdentifier == o.diffIdentifier}!
             let n = new[ni]
 
             if oi != ni {
