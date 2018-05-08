@@ -1,0 +1,6 @@
+platform :ios do
+  lane :test do
+    cocoapods(podfile: 'Example')
+    scan(scheme: 'BigDiffer-Example')
+  end
+end
