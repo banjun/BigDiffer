@@ -1,17 +1,17 @@
 PODS:
-  - BigDiffer (0.2.0):
-    - BigDiffer/BigDiffer (= 0.2.0)
-  - BigDiffer/BigDiffer (0.2.0):
+  - BigDiffer (0.3.0):
+    - BigDiffer/BigDiffer (= 0.3.0)
+  - BigDiffer/BigDiffer (0.3.0):
     - BigDiffer/Core
     - ListDiff
-  - BigDiffer/Core (0.2.0)
-  - BigDiffer/DeepDiff (0.2.0):
+  - BigDiffer/Core (0.3.0)
+  - BigDiffer/DeepDiff (0.3.0):
     - BigDiffer/Core
     - DeepDiff
-  - BigDiffer/Differ (0.2.0):
+  - BigDiffer/Differ (0.3.0):
     - BigDiffer/Core
     - Differ
-  - BigDiffer/HeckelDiff (0.2.0):
+  - BigDiffer/HeckelDiff (0.3.0):
     - BigDiffer/Core
     - HeckelDiff
   - DeepDiff (1.2.0)
@@ -51,7 +51,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BigDiffer: a412f219184a8b560e2c41d61659c54fd51b3d78
+  BigDiffer: 564072d8eddbc909e236406525b08d8817b1e1e3
   DeepDiff: 0ee83ac6942d441f677c22e981548c6e0937f2b6
   Differ: 5ac7b6d0d3a60274b52a0ef087ec0e411b57db2c
   Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed

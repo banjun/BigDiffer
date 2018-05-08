@@ -1,6 +1,6 @@
 # BigDiffer
 
-[![CI Status](https://img.shields.io/travis/banjun/BigDiffer.svg?style=flat)](https://travis-ci.org/banjun/BigDiffer)
+[![Build Status](https://www.bitrise.io/app/ff7029d1f62a94a5/status.svg?token=cMgKgeRCfCtRaPU49EVLZA)](https://www.bitrise.io/app/ff7029d1f62a94a5)
 [![Version](https://img.shields.io/cocoapods/v/BigDiffer.svg?style=flat)](https://cocoapods.org/pods/BigDiffer)
 [![License](https://img.shields.io/cocoapods/l/BigDiffer.svg?style=flat)](https://cocoapods.org/pods/BigDiffer)
 [![Platform](https://img.shields.io/cocoapods/p/BigDiffer.svg?style=flat)](https://cocoapods.org/pods/BigDiffer)
