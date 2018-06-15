@@ -128,6 +128,31 @@ class TableOfContentsSpec: QuickSpec {
                     IndexPath(row: 0, section: 1), // unchanged but reloaded because of invisibility before
                     IndexPath(row: 1, section: 1)]) // unchanged but reloaded because of invisibility before
             }
+
+            it("fallback to reload section") {
+                let tester = KIFUITestActor(file: #file, line: #line, delegate: self)!
+
+                let ttvc = TestableTableViewController(style: .plain)
+                ttvc.presentOnNewWindow()
+                ttvc.datasource = [
+                    SectionedValue(section: "S1", values: (UnicodeScalar("A").value...UnicodeScalar("Z").value).map {String(UnicodeScalar($0)!)}),
+                    SectionedValue(section: "S2", values: (1...500).map {String($0)})]
+                tester.waitForAnimationsToFinish()
+                ttvc.tableView.scrollToRow(at: IndexPath(row: 0, section: 1), at: .top, animated: false)
+                tester.waitForAnimationsToFinish()
+
+                expect(ttvc.tableView.indexPathsForVisibleRows).to(contain([
+                    IndexPath(row: 0, section: 1),
+                    IndexPath(row: 1, section: 1)]))
+                ttvc.cellForRowHistory.removeAll()
+
+                ttvc.datasource = [
+                    SectionedValue(section: "S2", values: (1...5).map {String($0)}),  // test condition here: many deletions to fallback to reload the section
+                    SectionedValue(section: "S1", values: (UnicodeScalar("A").value...UnicodeScalar("Z").value).map {String(UnicodeScalar($0)!)})]
+                tester.waitForAnimationsToFinish()
+
+                // NOTE: cannot actually test completely as the scroll position cannot be assumed
+            }
         }
     }
 }
