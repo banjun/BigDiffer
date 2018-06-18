@@ -20,6 +20,7 @@ public struct Changeset {
     public var insertionsInSections: [IndexPath] = []
     public var reloadableSectionIndices: [Int] = []
     public var fallbackedToReloadSectionIndices: [Int] = []
+    public var updatesInSections: [IndexPath] = []
 }
 
 extension Changeset {
@@ -44,8 +45,10 @@ extension Changeset {
         // calculate section-wise diff
         needsInspectionSectionIndices.forEach { oi in
             let o = old[oi]
+            let ao = Array(o)
             let ni = new.index {$0.diffIdentifier == o.diffIdentifier}!
             let n = new[ni]
+            let an = Array(n)
 
             guard oi == ni else {
                 // section deletions & insertions can reload cells without diffing
@@ -54,7 +57,7 @@ extension Changeset {
                 return
             }
 
-            let diff = List.diffing(oldArray: Array(o), newArray: Array(n))
+            let diff = List.diffing(oldArray: ao, newArray: an)
 
             guard diff.deletes.count <= maxDeletionsPreservingAnimations else {
                 // fallback to just reloading. many deletions take long time
@@ -64,6 +67,9 @@ extension Changeset {
 
             deletionsInSections.append(contentsOf: diff.deletes.map {IndexPath(row: $0, section: oi)})
             insertionsInSections.append(contentsOf: diff.inserts.map {IndexPath(row: $0, section: ni)})
+            updatesInSections.append(contentsOf: diff.updates
+                .compactMap {diff.newIndexFor(identifier: ao[$0].diffIdentifier)}
+                .map {IndexPath(row: $0, section: ni)})
         }
     }
 }
