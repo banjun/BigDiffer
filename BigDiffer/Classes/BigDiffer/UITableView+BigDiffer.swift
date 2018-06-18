@@ -9,13 +9,12 @@ extension UITableView {
         bigDiff: Changeset,
         rowDeletionAnimation: UITableViewRowAnimation = .fade,
         rowInsertionAnimation: UITableViewRowAnimation = .fade,
+        rowUpdateAnimation: UITableViewRowAnimation = .fade,
         sectionDeletionAnimation: UITableViewRowAnimation = .fade,
         sectionInsertionAnimation: UITableViewRowAnimation = .fade,
         sectionReloadingAnimation: UITableViewRowAnimation = .fade) {
         CATransaction.begin()
-        beginUpdates()
         defer {
-            endUpdates()
             CATransaction.setCompletionBlock {
                 // deleting all sections & inserting all sections
                 // with content offset > page size may cause blank page after an animation.
@@ -36,6 +35,7 @@ extension UITableView {
             CATransaction.commit()
         }
 
+        beginUpdates()
         deleteSections(.init(bigDiff.deletedSectionIndices), with: sectionDeletionAnimation)
         deleteRows(at: bigDiff.deletionsInSections, with: rowDeletionAnimation)
         bigDiff.sectionMoves.forEach {
@@ -48,6 +48,12 @@ extension UITableView {
         insertSections(.init(bigDiff.insertedSectionIndices), with: sectionInsertionAnimation)
         insertRows(at: bigDiff.insertionsInSections, with: rowInsertionAnimation)
         reloadSections(.init(bigDiff.reloadableSectionIndices + bigDiff.fallbackedToReloadSectionIndices), with: sectionReloadingAnimation)
+        endUpdates()
+
+        // separate animation grouping to avoid internal inconsistency within tableview
+        beginUpdates()
+        reloadRows(at: bigDiff.updatesInSections, with: rowUpdateAnimation)
+        endUpdates()
     }
 
     public func reloadUsingBigDiff<T: BigDiffableSection>(
@@ -55,6 +61,7 @@ extension UITableView {
         new: [T],
         rowDeletionAnimation: UITableViewRowAnimation = .fade,
         rowInsertionAnimation: UITableViewRowAnimation = .fade,
+        rowUpdateAnimation: UITableViewRowAnimation = .fade,
         sectionDeletionAnimation: UITableViewRowAnimation = .fade,
         sectionInsertionAnimation: UITableViewRowAnimation = .fade,
         sectionReloadingAnimation: UITableViewRowAnimation = .fade,
@@ -66,6 +73,7 @@ extension UITableView {
         apply(bigDiff: diff,
               rowDeletionAnimation: rowDeletionAnimation,
               rowInsertionAnimation: rowInsertionAnimation,
+              rowUpdateAnimation: rowUpdateAnimation,
               sectionDeletionAnimation: sectionDeletionAnimation,
               sectionInsertionAnimation: sectionInsertionAnimation,
               sectionReloadingAnimation: sectionReloadingAnimation)
