@@ -47,19 +47,23 @@ extension Changeset {
             let ni = new.index {$0.diffIdentifier == o.diffIdentifier}!
             let n = new[ni]
 
-            if oi != ni {
+            guard oi == ni else {
+                // section deletions & insertions can reload cells without diffing
+                // moreover, moving & reloading a section may cause tableview inconsistency error
                 sectionMoves.append((oi, ni))
+                return
             }
 
             let diff = List.diffing(oldArray: Array(o), newArray: Array(n))
 
-            if diff.deletes.count > maxDeletionsPreservingAnimations {
+            guard diff.deletes.count <= maxDeletionsPreservingAnimations else {
                 // fallback to just reloading. many deletions take long time
-                fallbackedToReloadSectionIndices.append(oi)
-            } else {
-                deletionsInSections.append(contentsOf: diff.deletes.map {IndexPath(row: $0, section: oi)})
-                insertionsInSections.append(contentsOf: diff.inserts.map {IndexPath(row: $0, section: ni)})
+                fallbackedToReloadSectionIndices.append(ni)
+                return
             }
+
+            deletionsInSections.append(contentsOf: diff.deletes.map {IndexPath(row: $0, section: oi)})
+            insertionsInSections.append(contentsOf: diff.inserts.map {IndexPath(row: $0, section: ni)})
         }
     }
 }

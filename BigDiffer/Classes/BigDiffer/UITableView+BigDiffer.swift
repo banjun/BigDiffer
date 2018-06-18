@@ -12,8 +12,29 @@ extension UITableView {
         sectionDeletionAnimation: UITableViewRowAnimation = .fade,
         sectionInsertionAnimation: UITableViewRowAnimation = .fade,
         sectionReloadingAnimation: UITableViewRowAnimation = .fade) {
+        CATransaction.begin()
         beginUpdates()
-        defer {endUpdates()}
+        defer {
+            endUpdates()
+            CATransaction.setCompletionBlock {
+                // deleting all sections & inserting all sections
+                // with content offset > page size may cause blank page after an animation.
+                // in the case, contentOffset.y has negative large number.
+                // we add workaround for that by resetting the offset
+                let minContentOffset: CGFloat
+
+                if #available(iOS 11, *) {
+                    minContentOffset = -self.adjustedContentInset.top
+                } else {
+                    minContentOffset = -self.contentInset.top
+                }
+
+                if self.contentOffset.y < minContentOffset {
+                    self.contentOffset.y = minContentOffset
+                }
+            }
+            CATransaction.commit()
+        }
 
         deleteSections(.init(bigDiff.deletedSectionIndices), with: sectionDeletionAnimation)
         deleteRows(at: bigDiff.deletionsInSections, with: rowDeletionAnimation)
