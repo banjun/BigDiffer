@@ -43,6 +43,14 @@ final class MenuViewController: FormViewController {
                     self.show(DeepDiffSingleSectionTableViewController(style: .plain), sender: nil)
                 }
                 $0.cell.accessoryType = .disclosureIndicator
+            }
+            +++ Section("kazuhiro4949/EditDistance + workaround")
+            <<< LabelRow {
+                $0.title = "Single-Section TableView"
+                $0.onCellSelection { [unowned self] _, _ in
+                    self.show(EditDistanceSingleSectionTableViewController(style: .plain), sender: nil)
+                }
+                $0.cell.accessoryType = .disclosureIndicator
         }
     }
     

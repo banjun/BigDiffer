@@ -1,21 +1,25 @@
 PODS:
-  - BigDiffer (0.3.0):
-    - BigDiffer/BigDiffer (= 0.3.0)
-  - BigDiffer/BigDiffer (0.3.0):
+  - BigDiffer (0.4.0):
+    - BigDiffer/BigDiffer (= 0.4.0)
+  - BigDiffer/BigDiffer (0.4.0):
     - BigDiffer/Core
     - ListDiff
-  - BigDiffer/Core (0.3.0)
-  - BigDiffer/DeepDiff (0.3.0):
+  - BigDiffer/Core (0.4.0)
+  - BigDiffer/DeepDiff (0.4.0):
     - BigDiffer/Core
     - DeepDiff
-  - BigDiffer/Differ (0.3.0):
+  - BigDiffer/Differ (0.4.0):
     - BigDiffer/Core
     - Differ
-  - BigDiffer/HeckelDiff (0.3.0):
+  - BigDiffer/EditDistance (0.4.0):
+    - BigDiffer/Core
+    - EditDistance
+  - BigDiffer/HeckelDiff (0.4.0):
     - BigDiffer/Core
     - HeckelDiff
   - DeepDiff (1.2.0)
   - Differ (1.2.2)
+  - EditDistance (0.8.1)
   - Eureka (4.1.1)
   - HeckelDiff (0.2.3)
   - KIF (3.7.3):
@@ -29,6 +33,7 @@ DEPENDENCIES:
   - BigDiffer (from `../`)
   - BigDiffer/DeepDiff (from `../`)
   - BigDiffer/Differ (from `../`)
+  - BigDiffer/EditDistance (from `../`)
   - BigDiffer/HeckelDiff (from `../`)
   - Eureka
   - KIF
@@ -36,9 +41,10 @@ DEPENDENCIES:
   - Quick
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - DeepDiff
     - Differ
+    - EditDistance
     - Eureka
     - HeckelDiff
     - KIF
@@ -51,9 +57,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BigDiffer: 564072d8eddbc909e236406525b08d8817b1e1e3
+  BigDiffer: 5971a1bfa54cce7479a2a87fc84684e252ddb11b
   DeepDiff: 0ee83ac6942d441f677c22e981548c6e0937f2b6
   Differ: 5ac7b6d0d3a60274b52a0ef087ec0e411b57db2c
+  EditDistance: e1a0ee9f597e2a1137d0543bc5a6bc2e6164402d
   Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
   HeckelDiff: 1170b3c499825d7c7d0478fd7ad779b07d0ad915
   KIF: 4c23b5d24dba24d3cb6dbb9c7d325b31e526ba4a
@@ -61,6 +68,6 @@ SPEC CHECKSUMS:
   Nimble: 391f07782af4b37914f9bd7b2ffbb952731b8202
   Quick: 03278013f71aa05fe9ecabc94fbcc6835f1ee76f
 
-PODFILE CHECKSUM: 44f71d85cefae9b92a21a6da825aba9df2b99a69
+PODFILE CHECKSUM: c33583143fbd83f3f52494b285b2fdc0d22495eb
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

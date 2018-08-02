@@ -10,7 +10,7 @@ extension Threshold {
 
 extension UITableView {
     public func applyDiffWithOptimizations<T: Collection>(_ old: T, _ new: T, inSection section: Int, withAnimation animation: UITableViewRowAnimation, reloadUpdated: Bool = true, maxRowsToCalculateDiffs: Int = Threshold.HeckelDiff.maxRowsToCalculateDiffs, maxDeletionsPreservingAnimations: Int = Threshold.HeckelDiff.maxDeletionsPreservingAnimations) where T.Iterator.Element: Hashable, T.Index == Int {
-        let update = ListUpdate(diff(old, new), section)
+        let update = ListUpdate(HeckelDiff.diff(old, new), section)
 
         // number of deletions affect tableview performance exponentially including non-visible deletions
         // NOTE: moves may also cost, unlikely to insertions

@@ -49,4 +49,10 @@ Pod::Spec.new do |s|
     ss.dependency 'BigDiffer/Core'
     ss.dependency 'DeepDiff'
   end
+
+  s.subspec 'EditDistance' do |ss|
+    ss.source_files = 'BigDiffer/Classes/EditDistance/**/*.swift'
+    ss.dependency 'BigDiffer/Core'
+    ss.dependency 'EditDistance'
+  end
 end

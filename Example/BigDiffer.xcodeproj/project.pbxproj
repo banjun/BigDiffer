@@ -20,6 +20,7 @@
 		EA732D4B20980CB900790B9B /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA732D4A20980CB900790B9B /* Data.swift */; };
 		EA732D4D2098583300790B9B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA732D4C2098583300790B9B /* MenuViewController.swift */; };
 		EA732D4F2098591900790B9B /* DifferMultiSectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA732D4E2098591800790B9B /* DifferMultiSectionTableViewController.swift */; };
+		EA801B8B2112DBD00028019A /* EditDistanceSingleSectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA801B8A2112DBD00028019A /* EditDistanceSingleSectionTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		EA732D4A20980CB900790B9B /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		EA732D4C2098583300790B9B /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		EA732D4E2098591800790B9B /* DifferMultiSectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifferMultiSectionTableViewController.swift; sourceTree = "<group>"; };
+		EA801B8A2112DBD00028019A /* EditDistanceSingleSectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDistanceSingleSectionTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				EA732D4E2098591800790B9B /* DifferMultiSectionTableViewController.swift */,
 				EA4318182099441A009BB737 /* HeckelDiffSingleSectionTableViewController.swift */,
 				EA43181C20996726009BB737 /* DeepDiffSingleSectionTableViewController.swift */,
+				EA801B8A2112DBD00028019A /* EditDistanceSingleSectionTableViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -327,6 +330,7 @@
 				"${BUILT_PRODUCTS_DIR}/BigDiffer/BigDiffer.framework",
 				"${BUILT_PRODUCTS_DIR}/DeepDiff/DeepDiff.framework",
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
+				"${BUILT_PRODUCTS_DIR}/EditDistance/EditDistance.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/HeckelDiff/HeckelDiff.framework",
 				"${BUILT_PRODUCTS_DIR}/ListDiff/ListDiff.framework",
@@ -336,6 +340,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigDiffer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeepDiff.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EditDistance.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HeckelDiff.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ListDiff.framework",
@@ -378,6 +383,7 @@
 				EA732D4B20980CB900790B9B /* Data.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				EA732D4D2098583300790B9B /* MenuViewController.swift in Sources */,
+				EA801B8B2112DBD00028019A /* EditDistanceSingleSectionTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
