@@ -2,7 +2,8 @@ platform :ios, '10.0'
 use_frameworks!
 
 target 'TableViewDiffPerformance' do
-  pod 'BigDiffer', path: '..'
+  pod 'BigDiffer/BigDiffer', path: '..'
+  pod 'BigDiffer/Differ', path: '..'
   pod 'Eureka'
   pod 'NorthLayout'
   pod '※ikemen'

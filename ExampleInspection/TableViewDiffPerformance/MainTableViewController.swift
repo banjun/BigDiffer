@@ -35,6 +35,9 @@ final class MainTableViewController: UIViewController, UITableViewDelegate, UITa
         $0.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
         $0.delegate = self
         $0.dataSource = self
+        $0.estimatedRowHeight = 0
+        $0.estimatedSectionHeaderHeight = 0
+        $0.estimatedSectionFooterHeight = 0
         $0.rowHeight = 64
     }
     private lazy var searchBar: UISearchBar = .init(frame: .zero) ※ {
@@ -113,7 +116,7 @@ final class MainTableViewController: UIViewController, UITableViewDelegate, UITa
         cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         return [UITableViewRowAction(style: .destructive, title: "Remove") { [unowned self] _, indexPath in
             let item = self.filteredSections[indexPath.section].items[indexPath.row]

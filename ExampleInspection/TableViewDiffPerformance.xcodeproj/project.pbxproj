@@ -182,6 +182,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TableViewDiffPerformance/Pods-TableViewDiffPerformance-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BigDiffer/BigDiffer.framework",
+				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FootlessParser/FootlessParser.framework",
 				"${BUILT_PRODUCTS_DIR}/ListDiff/ListDiff.framework",
@@ -194,6 +195,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigDiffer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FootlessParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ListDiff.framework",

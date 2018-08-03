@@ -1,10 +1,12 @@
 PODS:
-  - BigDiffer (0.4.0):
-    - BigDiffer/BigDiffer (= 0.4.0)
   - BigDiffer/BigDiffer (0.4.0):
     - BigDiffer/Core
     - ListDiff
   - BigDiffer/Core (0.4.0)
+  - BigDiffer/Differ (0.4.0):
+    - BigDiffer/Core
+    - Differ
+  - Differ (1.2.3)
   - Eureka (4.2.0)
   - FootlessParser (0.5.0)
   - ListDiff (0.1.0)
@@ -18,7 +20,8 @@ PODS:
   - "※ikemen (0.5.0)"
 
 DEPENDENCIES:
-  - BigDiffer (from `..`)
+  - BigDiffer/BigDiffer (from `..`)
+  - BigDiffer/Differ (from `..`)
   - Eureka
   - NorthLayout
   - ReactiveCocoa
@@ -27,6 +30,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Differ
     - Eureka
     - FootlessParser
     - ListDiff
@@ -42,6 +46,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   BigDiffer: 5971a1bfa54cce7479a2a87fc84684e252ddb11b
+  Differ: 061f3298ea9408494c43b530c44583e555884daf
   Eureka: 0748c7bbb2560130e43c7bfa83e99c98854a1f42
   FootlessParser: bc75547b0ccd696a0496993f394fdef3a2d481d0
   ListDiff: 8a29c2ae3c8370cc989b6d6d50bb40d58c4e9ede
@@ -51,6 +56,6 @@ SPEC CHECKSUMS:
   Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
   "※ikemen": 0cf85af52790db21a846ad31abca356e99da1ffb
 
-PODFILE CHECKSUM: bbd813f5223f60147c310a11007e952368f93da7
+PODFILE CHECKSUM: 127f9e392a5c31d366546236c6c4d9a9bf014a14
 
 COCOAPODS: 1.5.3
