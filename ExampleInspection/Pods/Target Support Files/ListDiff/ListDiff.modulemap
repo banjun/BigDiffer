@@ -1,0 +1,6 @@
+framework module ListDiff {
+  umbrella header "ListDiff-umbrella.h"
+
+  export *
+  module * { export * }
+}

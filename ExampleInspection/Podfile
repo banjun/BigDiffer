@@ -1,0 +1,11 @@
+platform :ios, '10.0'
+use_frameworks!
+
+target 'TableViewDiffPerformance' do
+  pod 'BigDiffer', path: '..'
+  pod 'Eureka'
+  pod 'NorthLayout'
+  pod '※ikemen'
+  pod 'ReactiveSwift'
+  pod 'ReactiveCocoa'
+end
