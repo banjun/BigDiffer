@@ -1,14 +1,33 @@
 import UIKit
 import NorthLayout
 import Ikemen
+import BigDiffer
 
-struct Section {
+struct Section: BigDiffableSection, Collection {
     var header: String?
     var items: [Item]
+
+    init(header: String? = nil, items: [Item], diffIdentifier: AnyHashable = arc4random()) {
+        self.header = header
+        self.items = items
+        self.diffIdentifier = diffIdentifier
+    }
+
+    // Diffable
+    var diffIdentifier: AnyHashable
+
+    // Collection
+    var startIndex: Int {return items.startIndex}
+    var endIndex: Int {return items.endIndex}
+    subscript(position: Int) -> Item {return items[position]}
+    func index(after i: Int) -> Int {return items.index(after: i)}
 }
 
-struct Item: Equatable {
+struct Item: Equatable, Hashable, Diffable {
     var name: String
+
+    // Diffable
+    var diffIdentifier: AnyHashable {return hashValue}
 }
 
 final class MainTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
@@ -29,11 +48,11 @@ final class MainTableViewController: UIViewController, UITableViewDelegate, UITa
     private var searchText: String = "" {
         didSet {
             updateFilteredSections()
-            tableView.reloadData()
         }
     }
     private var filteredSections: [Section] = [] {
         didSet {
+            tableView.reloadUsingBigDiff(old: oldValue, new: filteredSections)
         }
     }
 
@@ -45,7 +64,7 @@ final class MainTableViewController: UIViewController, UITableViewDelegate, UITa
         filteredSections = datasource.map { s in
             return Section(header: s.header, items: s.items.filter {
                 return $0.name.contains(searchText)
-            })
+            }, diffIdentifier: s.diffIdentifier)
         }
     }
 
@@ -67,7 +86,6 @@ final class MainTableViewController: UIViewController, UITableViewDelegate, UITa
             items: (1...5000).map {
                 Item(name: "Item \($0)")
         })]
-        tableView.reloadData()
     }
 
     override func viewDidLayoutSubviews() {
@@ -95,16 +113,13 @@ final class MainTableViewController: UIViewController, UITableViewDelegate, UITa
         cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         return [UITableViewRowAction(style: .destructive, title: "Remove") { [unowned self] _, indexPath in
             let item = self.filteredSections[indexPath.section].items[indexPath.row]
             self.datasource = self.datasource.map { s in
-                Section(header: s.header, items: s.items.filter {$0 != item})
-            }
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.headerView(forSection: indexPath.section)?.textLabel?.text = self.tableView(tableView, titleForHeaderInSection: indexPath.section)
-        }]
+                Section(header: s.header, items: s.items.filter {$0 != item}, diffIdentifier: s.diffIdentifier)
+            }}]
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
