@@ -27,11 +27,13 @@ final class MainTableViewController: UIViewController, UITableViewDelegate, UITa
         didSet {updateFilteredSections()}
     }
     private var searchText: String = "" {
-        didSet {updateFilteredSections()}
+        didSet {
+            updateFilteredSections()
+            tableView.reloadData()
+        }
     }
     private var filteredSections: [Section] = [] {
         didSet {
-            tableView.reloadData()
         }
     }
 
@@ -65,6 +67,7 @@ final class MainTableViewController: UIViewController, UITableViewDelegate, UITa
             items: (1...5000).map {
                 Item(name: "Item \($0)")
         })]
+        tableView.reloadData()
     }
 
     override func viewDidLayoutSubviews() {
@@ -99,6 +102,8 @@ final class MainTableViewController: UIViewController, UITableViewDelegate, UITa
             self.datasource = self.datasource.map { s in
                 Section(header: s.header, items: s.items.filter {$0 != item})
             }
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.headerView(forSection: indexPath.section)?.textLabel?.text = self.tableView(tableView, titleForHeaderInSection: indexPath.section)
         }]
     }
 
