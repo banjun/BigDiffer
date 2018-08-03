@@ -2,9 +2,13 @@ import UIKit
 import NorthLayout
 import Ikemen
 import BigDiffer
+import Differ
 
+// Performance Point 2. no use of Generics for faster Debug build runtime
+//struct Section<Item: Diffable & Equatable>: BigDiffableSection, Collection {
 struct Section: BigDiffableSection, Collection {
     var header: String?
+    
     var items: [Item]
 
     init(header: String? = nil, items: [Item], diffIdentifier: AnyHashable = arc4random()) {
@@ -23,12 +27,26 @@ struct Section: BigDiffableSection, Collection {
     func index(after i: Int) -> Int {return items.index(after: i)}
 }
 
-struct Item: Equatable, Hashable, Diffable {
+struct Item: Equatable, Hashable {
     var name: String
+}
 
-    // Diffable
+// Diffable - when use BigDiffer
+extension Section: Diffable {
+}
+extension Item: Diffable {
     var diffIdentifier: AnyHashable {return hashValue}
 }
+
+// when use Differ
+extension Section: Equatable {
+    static func == (lhs: Section, rhs: Section) -> Bool {
+        return lhs.diffIdentifier == rhs.diffIdentifier
+    }
+}
+
+// Performance Point 1. RandomAccessCollection makes diff faster (~11x)
+extension Section: RandomAccessCollection {}
 
 final class MainTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     private lazy var tableView: UITableView = .init(frame: .zero, style: .plain) ※ {
@@ -55,7 +73,11 @@ final class MainTableViewController: UIViewController, UITableViewDelegate, UITa
     }
     private var filteredSections: [Section] = [] {
         didSet {
-            tableView.reloadUsingBigDiff(old: oldValue, new: filteredSections)
+            // BigDiffer
+            // tableView.reloadUsingBigDiff(old: oldValue, new: filteredSections)
+
+            // Differ
+            tableView.animateRowAndSectionChanges(oldData: oldValue, newData: filteredSections)
         }
     }
 
