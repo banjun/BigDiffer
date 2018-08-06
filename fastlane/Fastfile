@@ -1,6 +1,6 @@
 platform :ios do
   lane :test do
-    cocoapods(podfile: 'Example')
+    cocoapods(podfile: 'Example', try_repo_update_on_error: true)
     scan(scheme: 'BigDiffer-Example')
   end
 end
