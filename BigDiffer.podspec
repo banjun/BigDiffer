@@ -55,4 +55,10 @@ Pod::Spec.new do |s|
     ss.dependency 'BigDiffer/Core'
     ss.dependency 'EditDistance'
   end
+
+  s.subspec 'DifferenceKit' do |ss|
+    ss.source_files = 'BigDiffer/Classes/DifferenceKit/**/*.swift'
+    ss.dependency 'BigDiffer/Core'
+    ss.dependency 'DifferenceKit'
+  end
 end

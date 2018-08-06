@@ -51,6 +51,14 @@ final class MenuViewController: FormViewController {
                     self.show(EditDistanceSingleSectionTableViewController(style: .plain), sender: nil)
                 }
                 $0.cell.accessoryType = .disclosureIndicator
+            }
+            +++ Section("ra1028/DifferenceKit + workaround")
+            <<< LabelRow {
+                $0.title = "Single-Section TableView"
+                $0.onCellSelection { [unowned self] _, _ in
+                    self.show(DifferenceKitSingleSectionTableViewController(style: .plain), sender: nil)
+                }
+                $0.cell.accessoryType = .disclosureIndicator
         }
     }
     

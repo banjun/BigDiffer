@@ -7,6 +7,7 @@ target 'BigDiffer_Example' do
   pod 'BigDiffer/HeckelDiff', :path => '../'
   pod 'BigDiffer/DeepDiff', :path => '../'
   pod 'BigDiffer/EditDistance', :path => '../'
+  pod 'BigDiffer/DifferenceKit', :path => '../'
   pod 'Eureka'
 
   target 'BigDiffer_Tests' do
