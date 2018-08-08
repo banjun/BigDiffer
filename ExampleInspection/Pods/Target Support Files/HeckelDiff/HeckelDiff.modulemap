@@ -1,0 +1,6 @@
+framework module HeckelDiff {
+  umbrella header "HeckelDiff-umbrella.h"
+
+  export *
+  module * { export * }
+}

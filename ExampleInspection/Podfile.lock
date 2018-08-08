@@ -6,9 +6,13 @@ PODS:
   - BigDiffer/Differ (0.4.0):
     - BigDiffer/Core
     - Differ
+  - BigDiffer/HeckelDiff (0.4.0):
+    - BigDiffer/Core
+    - HeckelDiff
   - Differ (1.2.3)
   - Eureka (4.2.0)
   - FootlessParser (0.5.0)
+  - HeckelDiff (0.2.3)
   - ListDiff (0.1.0)
   - NorthLayout (5.1.0):
     - FootlessParser (~> 0.4)
@@ -22,6 +26,7 @@ PODS:
 DEPENDENCIES:
   - BigDiffer/BigDiffer (from `..`)
   - BigDiffer/Differ (from `..`)
+  - BigDiffer/HeckelDiff (from `..`)
   - Eureka
   - NorthLayout
   - ReactiveCocoa
@@ -33,6 +38,7 @@ SPEC REPOS:
     - Differ
     - Eureka
     - FootlessParser
+    - HeckelDiff
     - ListDiff
     - NorthLayout
     - ReactiveCocoa
@@ -49,6 +55,7 @@ SPEC CHECKSUMS:
   Differ: 061f3298ea9408494c43b530c44583e555884daf
   Eureka: 0748c7bbb2560130e43c7bfa83e99c98854a1f42
   FootlessParser: bc75547b0ccd696a0496993f394fdef3a2d481d0
+  HeckelDiff: 1170b3c499825d7c7d0478fd7ad779b07d0ad915
   ListDiff: 8a29c2ae3c8370cc989b6d6d50bb40d58c4e9ede
   NorthLayout: 157045b4ef9e94019f00ec9dc66192c2b17c0c61
   ReactiveCocoa: 87cb64d78424d749a0bbfd9b07e4825e8d834066
@@ -56,6 +63,6 @@ SPEC CHECKSUMS:
   Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
   "※ikemen": 0cf85af52790db21a846ad31abca356e99da1ffb
 
-PODFILE CHECKSUM: 127f9e392a5c31d366546236c6c4d9a9bf014a14
+PODFILE CHECKSUM: 0c8970160dfc8fb7af2199eade099a1d6aadc8ee
 
 COCOAPODS: 1.5.3

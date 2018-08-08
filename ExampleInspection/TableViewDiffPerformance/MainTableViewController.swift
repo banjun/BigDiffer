@@ -3,6 +3,7 @@ import NorthLayout
 import Ikemen
 import BigDiffer
 import Differ
+import HeckelDiff
 
 // Performance Point 2. no use of Generics for faster Debug build runtime
 //struct Section<Item: Diffable & Equatable>: BigDiffableSection, Collection {
@@ -73,11 +74,24 @@ final class MainTableViewController: UIViewController, UITableViewDelegate, UITa
     }
     private var filteredSections: [Section] = [] {
         didSet {
-            // BigDiffer
-            // tableView.reloadUsingBigDiff(old: oldValue, new: filteredSections)
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            tableView.beginUpdates()
+            defer {
+                tableView.endUpdates()
+                CATransaction.commit()
+            }
+//            UIView.performWithoutAnimation {
+                // BigDiffer
+                //             tableView.reloadUsingBigDiff(old: oldValue, new: filteredSections)
 
-            // Differ
-            tableView.animateRowAndSectionChanges(oldData: oldValue, newData: filteredSections)
+                // Differ
+                //            tableView.animateRowAndSectionChanges(oldData: oldValue, newData: filteredSections)
+
+                // HeckelDiff
+                guard let old = oldValue.first, let new = filteredSections.first else { return }
+                tableView.applyDiff(old, new, inSection: 0, withAnimation: .none, reloadUpdated: false)
+//            }
         }
     }
 

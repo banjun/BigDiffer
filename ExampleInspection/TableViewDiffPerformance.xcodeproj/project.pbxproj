@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9565093C683C2210C9D8A05E /* Pods_TableViewDiffPerformance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE0699DF3A44E03D3518858 /* Pods_TableViewDiffPerformance.framework */; };
+		EA010E32211999740080448A /* DeletionPerformanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA010E31211999740080448A /* DeletionPerformanceViewController.swift */; };
 		EA35995021140041006D1490 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35994F21140041006D1490 /* AppDelegate.swift */; };
 		EA35995221140041006D1490 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35995121140041006D1490 /* MenuViewController.swift */; };
 		EA35995721140044006D1490 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA35995621140044006D1490 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 		1968D54D232C0560AE914511 /* Pods-TableViewDiffPerformance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewDiffPerformance.release.xcconfig"; path = "Pods/Target Support Files/Pods-TableViewDiffPerformance/Pods-TableViewDiffPerformance.release.xcconfig"; sourceTree = "<group>"; };
 		4EE0699DF3A44E03D3518858 /* Pods_TableViewDiffPerformance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TableViewDiffPerformance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		592DAFA0D23DD613F55E477C /* Pods-TableViewDiffPerformance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewDiffPerformance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TableViewDiffPerformance/Pods-TableViewDiffPerformance.debug.xcconfig"; sourceTree = "<group>"; };
+		EA010E31211999740080448A /* DeletionPerformanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletionPerformanceViewController.swift; sourceTree = "<group>"; };
 		EA35994C21140040006D1490 /* TableViewDiffPerformance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewDiffPerformance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA35994F21140041006D1490 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA35995121140041006D1490 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				EA35994F21140041006D1490 /* AppDelegate.swift */,
 				EA35995121140041006D1490 /* MenuViewController.swift */,
 				EA41E883211408FE004FCCF3 /* MainTableViewController.swift */,
+				EA010E31211999740080448A /* DeletionPerformanceViewController.swift */,
 				EA35995621140044006D1490 /* Assets.xcassets */,
 				EA35995821140044006D1490 /* LaunchScreen.storyboard */,
 				EA35995B21140044006D1490 /* Info.plist */,
@@ -185,6 +188,7 @@
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FootlessParser/FootlessParser.framework",
+				"${BUILT_PRODUCTS_DIR}/HeckelDiff/HeckelDiff.framework",
 				"${BUILT_PRODUCTS_DIR}/ListDiff/ListDiff.framework",
 				"${BUILT_PRODUCTS_DIR}/NorthLayout/NorthLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
@@ -198,6 +202,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FootlessParser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HeckelDiff.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ListDiff.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NorthLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
@@ -220,6 +225,7 @@
 				EA35995221140041006D1490 /* MenuViewController.swift in Sources */,
 				EA41E884211408FE004FCCF3 /* MainTableViewController.swift in Sources */,
 				EA35995021140041006D1490 /* AppDelegate.swift in Sources */,
+				EA010E32211999740080448A /* DeletionPerformanceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +277,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

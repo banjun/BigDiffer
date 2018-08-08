@@ -4,6 +4,7 @@ use_frameworks!
 target 'TableViewDiffPerformance' do
   pod 'BigDiffer/BigDiffer', path: '..'
   pod 'BigDiffer/Differ', path: '..'
+  pod 'BigDiffer/HeckelDiff', path: '..'
   pod 'Eureka'
   pod 'NorthLayout'
   pod '※ikemen'
